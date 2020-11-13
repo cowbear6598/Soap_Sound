@@ -1,0 +1,16 @@
+{
+  "name": "com.funtech.soap-sound",
+  "version": "1.0.0",
+  "displayName": "Soap's Sound",
+  "description": "\u81ea\u5df1\u4f7f\u7528\u7684\u97f3\u6548\u64ad\u653e\u7ba1\u7406",
+  "unity": "2019.3",
+  "keywords": [
+    "tools",
+    "soap",
+    "sound"
+  ],
+  "type": "tools",
+  "dependencies": {
+    "com.unity.addressables": "1.16.7"
+  }
+}
