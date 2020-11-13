@@ -16,16 +16,19 @@ namespace Soap.Sound
     
     public class SoundManager : MonoBehaviour
     {
-        public static readonly SoundManager Instance;
-
-        static SoundManager()
+        private static SoundManager instance;
+        public static SoundManager Instance
         {
-            if (Instance == null)
+            get
             {
-                GameObject g = new GameObject("SoundManager");
-                Instance = g.AddComponent<SoundManager>();
+                if (instance == null)
+                {
+                    GameObject g = new GameObject("SoundManger");
 
-                DontDestroyOnLoad(g);
+                    instance = g.AddComponent<SoundManager>();
+                }
+                
+                return instance;
             }
         }
         
@@ -44,7 +47,12 @@ namespace Soap.Sound
         private bool IsChangingBGM = false;
 
         private AsyncOperationHandle<AudioClip> bgmAsyncHandle;
-        
+
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         public void Play2D(AssetReferenceAudioClip _clip, float _volume = 1, float _pitch = 1)
         {
             AudioSource _sound = GetFreeEffectSound();
@@ -111,30 +119,30 @@ namespace Soap.Sound
                         IsChangingBGM = false;
                         break;
                     case BGMTransitionType.Fade:
-                       // Timing.RunCoroutine(BGM_Fade(_handle,_fadeSpeed));
+                       StartCoroutine(BGM_Fade(_handle,_fadeSpeed));
                         break;
                 }
             };
         }
 
-        // private IEnumerator<float> BGM_Fade(AsyncOperationHandle<AudioClip> _clipHandle,float _fadeSpeed)
-        // {
-        //     while (bgmSound.volume > 0)
-        //     {
-        //         bgmSound.volume -= Time.deltaTime * _fadeSpeed;
-        //         yield return Timing.WaitForOneFrame;
-        //     }
-        //
-        //     BGM_ReleaseAndSetAsset(_clipHandle);
-        //     
-        //     while (bgmSound.volume < 1)
-        //     {
-        //         bgmSound.volume += Time.deltaTime * _fadeSpeed;
-        //         yield return Timing.WaitForOneFrame;
-        //     }
-        //
-        //     IsChangingBGM = false;
-        // }
+        private IEnumerator BGM_Fade(AsyncOperationHandle<AudioClip> _clipHandle,float _fadeSpeed)
+        {
+            while (bgmSound.volume > 0)
+            {
+                bgmSound.volume -= Time.deltaTime * _fadeSpeed;
+                yield return null;
+            }
+        
+            BGM_ReleaseAndSetAsset(_clipHandle);
+            
+            while (bgmSound.volume < 1)
+            {
+                bgmSound.volume += Time.deltaTime * _fadeSpeed;
+                yield return null;
+            }
+        
+            IsChangingBGM = false;
+        }
 
         private void BGM_ReleaseAndSetAsset(AsyncOperationHandle<AudioClip> _clipHandle)
         {

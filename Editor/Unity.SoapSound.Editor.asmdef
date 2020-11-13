@@ -1,3 +1,15 @@
-﻿{
-	"name": "Unity.SoapSound.Editor"
+{
+    "name": "Unity.SoapSound.Editor",
+    "references": [
+        "GUID:89e2acb57d1d57249940c0896ab687b6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

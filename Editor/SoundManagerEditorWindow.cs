@@ -66,8 +66,8 @@ namespace Soap.Sound
             PlayerPrefs.SetInt("SoundManager_EffectSoundCount", effectSoundCount);
             PlayerPrefs.Save();
 
-            // if (SoundManager.Instance)
-            //     DestroyImmediate(SoundManager.Instance.gameObject);
+            if (SoundManager.Instance)
+                DestroyImmediate(SoundManager.Instance.gameObject);
 
             for (int i = 0; i < effectSoundCount; i++)
             {
@@ -81,9 +81,9 @@ namespace Soap.Sound
                     effectSound.outputAudioMixerGroup = effectAudioMixerGroup;
                 }
 
-                // effectSoundObj.transform.SetParent(SoundManager.Instance.transform);
-                //
-                // SoundManager.Instance.SetEffectSound(effectSound);
+                effectSoundObj.transform.SetParent(SoundManager.Instance.transform);
+                
+                SoundManager.Instance.SetEffectSound(effectSound);
             }
 
             // 建立背景音樂
@@ -98,9 +98,9 @@ namespace Soap.Sound
                 bgmSound.outputAudioMixerGroup = bgmAudioMixerGroup;
             }
 
-            // bgmSoundObj.transform.SetParent(SoundManager.Instance.transform);
-            //
-            // SoundManager.Instance.SetBGMSound(bgmSound);
+            bgmSoundObj.transform.SetParent(SoundManager.Instance.transform);
+            
+            SoundManager.Instance.SetBGMSound(bgmSound);
         }
     }
 }
