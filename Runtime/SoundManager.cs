@@ -21,6 +21,16 @@ namespace Soap.Sound
         {
             get
             {
+                if (instance != null)
+                {
+                    return instance;
+                }
+
+                instance = FindObjectOfType<SoundManager>();
+
+                if (instance != null)
+                    return instance;
+                
                 if (instance == null)
                 {
                     GameObject g = new GameObject("SoundManger");
