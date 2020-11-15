@@ -1,16 +1,21 @@
 {
   "name": "com.funtech.soap-sound",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "displayName": "Soap's Sound",
-  "description": "\u81ea\u5df1\u4f7f\u7528\u7684\u97f3\u6548\u64ad\u653e\u7ba1\u7406",
+  "description": "My Sound Manager",
   "unity": "2019.3",
   "keywords": [
     "tools",
     "soap",
     "sound"
   ],
+  "author": {
+    "name": "Soap",
+    "email": "cowbear6598@gmail.com",
+    "url": "https://github.com/cowbear6598/Soap_Sound.git"
+  },
   "type": "tools",
   "dependencies": {
-    "com.unity.addressables": "1.16.7"
+    "com.unity.addressables": "1.16.10"
   }
 }
